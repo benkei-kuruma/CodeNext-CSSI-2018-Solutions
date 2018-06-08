@@ -1,4 +1,6 @@
-console.log("Hello World!");
+var readline = require("readline-sync");
+var userName = readline.question("Please enter your name: ");
+console.log("Hello " + userName + "!");
 console.log("It's a beautiful day for programming, isn't it?");
 console.log("Hey! What's 1 + 1?");
 console.log("It's " + 1 + 1 + " of course!");
