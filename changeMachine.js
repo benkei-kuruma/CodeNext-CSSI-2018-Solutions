@@ -2,7 +2,7 @@
 var readline = require("readline-sync");
 console.log("*****************************************************************");
 console.log("bLeep blOop! i'm a CHanGE macHINe!");
-var cents = parseInt(readline.question("Please enter cents as positive integer: "));
+var cents = parseInt(readline.question("Please enter cents as a positive integer: "));
 console.log(cents + " cents makes:");
 var quarters = parseInt(cents / 25);
 cents = cents - quarters * 25;
