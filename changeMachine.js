@@ -1,4 +1,4 @@
-// Author: Aaron Hobson
+// Author: FirstName LastName
 var readline = require("readline-sync");
 console.log("*****************************************************************");
 console.log("bLeep blOop! i'm a CHanGE macHINe!");

@@ -1,4 +1,4 @@
-// Author: Aaron Hobson
+// Author: FirstName LastName
 var y = 2003;
 console.log("y = " + y);
 var a = y % 19;
