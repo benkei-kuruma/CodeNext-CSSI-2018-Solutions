@@ -1,4 +1,4 @@
-// Author: FirstName LastName
+// Author: Aaron Hobson
 var readline = require("readline-sync");
 console.log("******************************************************************");
 console.log("Welcome to Super Easter Predictor!");
