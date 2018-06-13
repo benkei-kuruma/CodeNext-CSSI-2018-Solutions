@@ -1,5 +1,5 @@
 // Author: FirstName LastName
-var y = 2003;
+var y = 1550;
 console.log("y = " + y);
 var a = y % 19;
 console.log("a = " + a);
