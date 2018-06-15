@@ -1,0 +1,23 @@
+{
+  "name": "cssi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "change-machine.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahob85/CSSI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahob85/CSSI/issues"
+  },
+  "homepage": "https://github.com/ahob85/CSSI#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.9",
+    "system-sleep": "^1.3.6"
+  }
+}
