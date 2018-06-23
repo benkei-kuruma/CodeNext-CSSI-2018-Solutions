@@ -165,7 +165,7 @@ function processResult() {
       I. Print the stones remaining.
       II. Ask players to remove stones.
     C. There are no more stones remaining, so process results here.
-  4. Quit is true, so print a goodbye message here.
+  4. quit is true, so print a goodbye message here.
 *******************************************************************************/
 
 function run() {
