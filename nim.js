@@ -129,9 +129,12 @@ function removeStones() {
   This function is called in run() when there are no more stones remaining. It
   first prints a "Player X Wins!" message, depending on who the currently
   active player is (this was switched at the end of the last call to
-  removeStones()). It then asks players if they would like to keep playing.
-  If players choose yes, nothing happens here. If players choose no, quit is
-  set to true. The rest is handled in run().
+  removeStones()). Note that whoever removes the last stone loses, which is
+  already accounted for if you wrote removeStones() correctly!
+
+  This function then asks players if they would like to keep playing. If players
+  choose yes, nothing happens here. If players choose no, quit is set to true.
+  The rest is handled in run().
 *******************************************************************************/
 
 function processResult() {
