@@ -148,12 +148,24 @@ function checkGuess() {
 }
 
 function checkWon() {
-  for(var i = 0; i < secretWord.length; i++) {
+  var won = true;
+  for(var i = 0; i < secretWord.length && won; i++) {
     if(correctLetters.indexOf(secretWord[i]) === -1) {
-      return false;
+      won = false;
     }
   }
-  return true;
+  if(won) {
+    console.log("Yes! The secret word is \"" + secretWord + "\"! You win!");
+    quit = true;
+  } else if(missedLetters.length === FLOWER_PICS.length - 1) {
+    printBoard();
+    console.log("You have run out of guesses!");
+    console.log("The correct word was \"" + secretWord + "\"");
+    quit = true;
+  }
+  if(quit) {
+    processGameOver();
+  }
 }
 
 function processGameOver() {
@@ -176,18 +188,7 @@ function run() {
   while(!quit) {
     printBoard();
     checkGuess();
-    if(checkWon()) {
-      console.log("Yes! The secret word is \"" + secretWord + "\"! You win!");
-      quit = true;
-    } else if(missedLetters.length === FLOWER_PICS.length - 1) {
-      printBoard();
-      console.log("You have run out of guesses!");
-      console.log("The correct word was \"" + secretWord + "\"");
-      quit = true;
-    }
-    if(quit) {
-      processGameOver();
-    }
+    checkWon();
   }
 }
 
