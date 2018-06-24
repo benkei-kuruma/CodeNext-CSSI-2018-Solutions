@@ -1,51 +1,60 @@
 // Author: FirstName lastName
+
+/******************************************************************************
+                                constant variables
+
+These are global variables that should stay the same throughout the run of the
+program. After being initialized, JavaScript won't let you change them ever
+again. Great for when you want to "protect" certain variables from accidental
+tampering!
+*******************************************************************************/
 const READLINE = require("readline-sync");
 const FLOWER_PICS = [
-" # # #\n" +
-" # O #\n" +
-" # # #\n" +
-"   |  \n" +
-"   |  \n",
-" # # #\n" +
-" # O #\n" +
-"   # #\n" +
-"   |  \n" +
-"   |  \n",
-" # # #\n" +
-"   O #\n" +
-"   # #\n" +
-"   |  \n" +
-"   |  \n",
-"   # #\n" +
-"   O #\n" +
-"   # #\n" +
-"   |  \n" +
-"   |  \n",
-"     #\n" +
-"   O #\n" +
-"   # #\n" +
-"   |  \n" +
-"   |  \n",
-"      \n" +
-"   O #\n" +
-"   # #\n" +
-"   |  \n" +
-"   |  \n",
-"      \n" +
-"   O  \n" +
-"   # #\n" +
-"   |  \n" +
-"   |  \n",
-"      \n" +
-"   O  \n" +
-"   #  \n" +
-"   |  \n" +
-"   |  \n",
-"      \n" +
-"   x  \n" +
-"   |  \n" +
-"   |  \n" +
-"   |  \n"
+"  # # #\n" +
+"  # O #\n" +
+"  # # #\n" +
+"    |  \n" +
+"    |  \n",
+"  # # #\n" +
+"  # O #\n" +
+"    # #\n" +
+"    |  \n" +
+"    |  \n",
+"  # # #\n" +
+"    O #\n" +
+"    # #\n" +
+"    |  \n" +
+"    |  \n",
+"    # #\n" +
+"    O #\n" +
+"    # #\n" +
+"    |  \n" +
+"    |  \n",
+"      #\n" +
+"    O #\n" +
+"    # #\n" +
+"    |  \n" +
+"    |  \n",
+"       \n" +
+"    O #\n" +
+"    # #\n" +
+"    |  \n" +
+"    |  \n",
+"       \n" +
+"    O  \n" +
+"    # #\n" +
+"    |  \n" +
+"    |  \n",
+"       \n" +
+"    O  \n" +
+"    #  \n" +
+"    |  \n" +
+"    |  \n",
+"       \n" +
+"    x  \n" +
+"    |  \n" +
+"    |  \n" +
+"    |  \n"
 ]
 const WORDS = ("ant baboon badger bat bear beaver camel cat clam cobra cougar coyote " +
 "crow deer dog donkey duck eagle ferret fox frog goat goose hawk lion lizard llama " +
@@ -67,12 +76,12 @@ correctly so far. Initialized as an empty array at the start of each game.
 secretWord
 String. This is the word the player has to guess! Initialized by getRandomWord().
 
-quit
-Boolean. Represents if the player has chosen to quit the game (true) or not
-(false). Initialized to false in run(), can be altered in processResult().
+running
+Boolean. Represents if the program should continue running (true) or not (false).
+Initialized to true in setupGame(), can be changed in processGameOver();
 *******************************************************************************/
 
-var missedLetters, correctLetters, secretWord, quit;
+var missedLetters, correctLetters, secretWord, running;
 
 function printGreeting() {
   console.log();
@@ -87,13 +96,12 @@ function setupGame() {
   missedLetters = [];
   correctLetters = [];
   secretWord = getRandomWord();
-  quit = false;
+  running = true;
 }
 
 function printBoard() {
   console.log();
   console.log(FLOWER_PICS[missedLetters.length]);
-  console.log();
   console.log("Missed letters: ");
   var missedLettersString = "";
   for(var i = 0; i < missedLetters.length; i++) {
@@ -156,14 +164,14 @@ function checkWon() {
   }
   if(won) {
     console.log("Yes! The secret word is \"" + secretWord + "\"! You win!");
-    quit = true;
+    running = false;
   } else if(missedLetters.length === FLOWER_PICS.length - 1) {
     printBoard();
     console.log("You have run out of guesses!");
     console.log("The correct word was \"" + secretWord + "\"");
-    quit = true;
+    running = false;
   }
-  if(quit) {
+  if(!running) {
     processGameOver();
   }
 }
@@ -174,18 +182,19 @@ function processGameOver() {
     missedLetters = [];
     correctLetters = [];
     secretWord = getRandomWord();
-    quit = false;
+    running = true;
     console.log();
   } else {
     console.log();
     console.log("Goodbye!");
+    console.log();
   }
 }
 
 function run() {
   printGreeting();
   setupGame();
-  while(!quit) {
+  while(running) {
     printBoard();
     checkGuess();
     checkWon();
