@@ -322,7 +322,7 @@ function processGameOver() {
 /******************************************************************************
                                       run()
 
-  The "mother" of the program. Runs the game by doing the following:
+  The "mother function" of the program. Runs the game by doing the following:
   1) Print a greeting.
   2) Setup the game.
   3) In a loop that continues while the global variable running is true, do
