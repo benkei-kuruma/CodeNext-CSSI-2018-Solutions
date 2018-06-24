@@ -8,6 +8,7 @@ program. After being initialized, JavaScript won't let you change them ever
 again. Great for when you want to "protect" certain variables from accidental
 tampering!
 *******************************************************************************/
+
 const READLINE = require("readline-sync");
 const FLOWER_PICS = [
 "  # # #\n" +
@@ -83,6 +84,13 @@ Initialized to true in setupGame(), can be changed in processGameOver();
 
 var missedLetters, correctLetters, secretWord, running;
 
+/******************************************************************************
+                                  printGreeting()
+
+  Prints a simple greeting. Be as creative as you want here. Be sure to include
+  your name as the author!
+*******************************************************************************/
+
 function printGreeting() {
   console.log();
   console.log("--------------------------------------------------------------");
@@ -92,6 +100,15 @@ function printGreeting() {
   console.log();
 }
 
+/******************************************************************************
+                                  setupGame()
+
+  Initialize global variables as follows:
+  -missedLetters and correctLetters should be initialized as empty arrays.
+  -secretWord should be initialized as a random string from the WORD constant.
+  -running should be initialized to true.
+*******************************************************************************/
+
 function setupGame() {
   missedLetters = [];
   correctLetters = [];
@@ -99,15 +116,15 @@ function setupGame() {
   running = true;
 }
 
-function printBoard() {
-  console.log();
-  console.log(FLOWER_PICS[missedLetters.length]);
-  console.log("Missed letters: ");
+function printMissedLetters() {
   var missedLettersString = "";
   for(var i = 0; i < missedLetters.length; i++) {
     missedLettersString += missedLetters[i];
   }
-  console.log(missedLettersString);
+  console.log("Missed letters: " + missedLettersString);
+}
+
+function printBlanks() {
   var blanks = [];
   for(var i = 0; i < secretWord.length; i++) {
     blanks.push("_");
@@ -121,7 +138,14 @@ function printBoard() {
   for(var i = 0; i < blanks.length; i++) {
     blanksString += blanks[i];
   }
-  console.log(blanksString);
+  console.log("Secret word: " + blanksString);
+}
+
+function printBoard() {
+  console.log();
+  console.log(FLOWER_PICS[missedLetters.length]);
+  printMissedLetters();
+  printBlanks();
   console.log();
 }
 
