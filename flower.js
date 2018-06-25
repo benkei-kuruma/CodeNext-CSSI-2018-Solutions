@@ -122,9 +122,9 @@ function setupGame() {
                                   printMissedLetters()
 
   Prints the string "Missed letters: ", along with all elements in missedLetters
-  as a single string. For example, if missedLetters is ["a", "b", "c", "d"],
-  this function prints "Missed letters: a b c d" on one line. Spaces between
-  each letter are optional.
+  as a single string, with a space between each letter. For example, if
+  missedLetters is ["a", "b", "c", "d"], this function prints "Missed letters:
+  a b c d" on one line.
 *******************************************************************************/
 
 function printMissedLetters() {
@@ -141,11 +141,11 @@ function printMissedLetters() {
   Prints the string "Secret Word: ", along with whatever letters the player has
   guessed correctly, as a single string. The correct letters should appear where
   they normally do in the secret word. Letters the player has not yet guessed
-  should appear as underscores ("blanks").
+  should appear as underscores ("blanks"). There should be a space between each
+  letter or blank.
 
   For example, if the secret word is "google" and the player has guessed "o",
-  this function prints "Correct letters: _ o o _ _ _". Spaces between each
-  letter/blank are optional.
+  this function prints "Correct letters: _ o o _ _ _".
 *******************************************************************************/
 
 function printCorrectLetters() {
@@ -201,8 +201,8 @@ function getRandomWord() {
   the loop only if the player's guess is "valid", which means it passes all
   three of these conditions:
    1) The length of the guess must be exactly 1.
-   2) The guess cannot be a letter they have already guessed (this is an array
-      passed into the function as alreadyGuessed).
+   2) The guess cannot be a letter they have already guessed (alreadyGuessed is
+      an array passed into the function).
    3) The guess must be a letter in the English alphabet.
 
   Return the guess if it is valid. If a guess does not satisfy a condition,
