@@ -123,13 +123,14 @@ function setupGame() {
 
   Prints the string "Missed letters: ", along with all elements in missedLetters
   as a single string. For example, if missedLetters is ["a", "b", "c", "d"],
-  this function prints "Missed letters: abcd" on one line.
+  this function prints "Missed letters: a b c d" on one line. Spaces between
+  each letter are optional.
 *******************************************************************************/
 
 function printMissedLetters() {
   var missedLettersString = "";
   for(var i = 0; i < missedLetters.length; i++) {
-    missedLettersString += missedLetters[i];
+    missedLettersString += missedLetters[i] + " ";
   }
   console.log("Missed letters: " + missedLettersString);
 }
@@ -143,8 +144,8 @@ function printMissedLetters() {
   should appear as underscores ("blanks").
 
   For example, if the secret word is "google" and the player has guessed "o",
-  this function prints "Correct letters: _ o o _ _ _" (spaces optional, only
-  adding them here to separate each underscore in this comment).
+  this function prints "Correct letters: _ o o _ _ _". Spaces between each
+  letter/blank are optional.
 *******************************************************************************/
 
 function printCorrectLetters() {
@@ -159,7 +160,7 @@ function printCorrectLetters() {
   }
   var blanksString = "";
   for(var i = 0; i < blanks.length; i++) {
-    blanksString += blanks[i];
+    blanksString += blanks[i] + " ";
   }
   console.log("Correct letters: " + blanksString);
 }
