@@ -1,8 +1,8 @@
-var bar = 3;
+var a = [1, 2, 3];
 
-function foo(param) {
-  param = 8;
+function foo(nums) {
+  nums = [3, 2, 1];
 }
 
-foo(bar);
-console.log(bar);
+foo(a);
+console.log(a.toString());
