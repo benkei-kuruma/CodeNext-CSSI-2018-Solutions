@@ -2,6 +2,22 @@
 var readline = require("readline-sync");
 
 /******************************************************************************
+                                  printGreeting()
+
+  Prints a simple greeting. Be as creative as you want here. Be sure to include
+  your name as the author!
+*******************************************************************************/
+
+function printGreeting() {
+  console.log();
+  console.log("--------------------------------------------------------------");
+  console.log("                        Talking Numbers                       ");
+  console.log("--------------------------------------------------------------");
+  console.log("By: FirstName LastName");
+  console.log();
+}
+
+/******************************************************************************
   This function takes a number between 1 and 9 (inclusive) as input and returns
   that same number in word form. If the number is not between 1 and 9, the
   function returns an empty string, which is just "".
@@ -162,9 +178,7 @@ function sayNumber(num) {
   number in word form.
 *******************************************************************************/
 function run() {
-  console.log("");
-  console.log("Let's Talk Numbers!");
-  console.log("A Program by: FirstName LastName");
+  printGreeting();
   var number = readline.question("Please enter any number between 0 and 9999: ");
   console.log("Word Form: " + sayNumber(number));
   console.log("I hope that was correct! Thank you!");
