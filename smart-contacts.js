@@ -15,7 +15,12 @@ const READLINE = require("READLINE-sync");
                                 global variables
 
   contacts
-  Object Array. Each object represents a contact.
+  Object Array. Each object represents a contact. Contacts have four properties,
+  and all property values are strings:
+    -name: The contact's name. Can consist of any characters, spaces, etc.
+    -number: The contact's 10-digit phone number (as a string).
+    -email: The contact's email address.
+    -notes: Any additional text relevant to the contact (e.g., "mobile number")
 
   quit
   Boolean. Represents if the program should continue running (true) or
@@ -34,7 +39,7 @@ var contacts, quit;
 function printGreeting() {
   console.log();
   console.log("--------------------------------------------------------------");
-  console.log("                          Contacts                            ");
+  console.log("                        Smart Contacts                        ");
   console.log("--------------------------------------------------------------");
   console.log("By: FirstName LastName");
   console.log();
@@ -117,7 +122,8 @@ function getNumberInput() {
 
   Check if an email address is valid, according to the following criteria:
   -Email addresses are optional, so they can be length 0. However, if the
-   length of the email address is greater than 0, the criteria below apply.
+   length of an email address is greater than 0, it needs to be validated,
+   so the criteria below apply.
   -Email addresses must contain just one "@" symbol, but not as the first
    character.
   -Email addresses must end in ".com", ".org", ".net", or ".edu".
@@ -195,12 +201,6 @@ function compareContacts(a, b) {
   with those values, add the object to the global contacts array, and sort
   the array according to the compareContacts() function. Finally, let the user
   know that the contact was added successfully.
-
-  Contacts have four properties, and all values are strings:
-    -name: The contact's name. Can consist of any characters, spaces, etc.
-    -number: The contact's 10-digit phone number (as a string).
-    -email: The contact's email address.
-    -notes: Any additional text relevant to the contact (e.g., "mobile number")
 
   You should get the user's input for name, number, and email by calling the
   getNameInput(), getNumberInput(), and getEmailInput() functions, respectively.
@@ -333,8 +333,6 @@ function displayUpdateMenu(contactIndex) {
 
 /******************************************************************************
                                 updateContact()
-
-  Attempt to assign a new value to one of a contact's properties.
 
   Ask the user to enter the contact's name, and search the contacts array for
   that contact by name (you have functions for both of these actions).
