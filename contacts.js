@@ -48,7 +48,7 @@ function printGreeting() {
   -quit initialized as false
 *******************************************************************************/
 
-function setupApp() {
+function setup() {
   contacts = [];
   quit = false;
 }
@@ -106,7 +106,7 @@ function checkNumber(number) {
 function getNumberInput() {
   var numberInput = READLINE.question("Phone Number: ").trim();
   while(!checkNumber(numberInput)) {
-    console.log("Please enter a 10-digit phone number.");
+    console.log("Please enter a 10-digit phone number (e.g., 1234567890).");
     numberInput = READLINE.question("Phone Number: ").trim();
   }
   return numberInput;
@@ -279,23 +279,34 @@ function removeContact() {
 /******************************************************************************
                                 displayUpdateMenu()
 
-  Attempt to assign a new value to one of a contact's properties.
+  Display the contact update menu, with the following choices:
+   1) Name
+   2) Phone Number
+   3) Email Address
+   4) Notes
+   0) Return to Main Menu
+
+  Based on what the user chooses, update the appropriate value for the contact
+  located at contactIndex. Call the necessary functions to get input for
+  name, number, and email, while notes do not need any special validation. Also
+  be sure to allow the user to quit this menu and return to the main menu
+  by entering "0" (or anything else you want).
+
   Don't forget to re-sort the contacts array if the user updates any contact's
   name!
 *******************************************************************************/
 
-function displayUpdateMenu() {
-  console.log();
-  console.log("Update " + contactName);
+function displayUpdateMenu(contactIndex) {
+  console.log("Update " + contacts[contactIndex].name);
   console.log("1: Name");
-  console.log("2: Number");
-  console.log("3: Email");
+  console.log("2: Phone Number");
+  console.log("3: Email Address");
   console.log("4: Notes");
-  console.log("q: Quit (go back)")
-  var choice = READLINE.question("Enter a value: ").trim().toLowerCase();
-  while(!(choice >= 1 && choice <= 4) && choice != "q") {
+  console.log("0: Return to Main Menu")
+  var choice = READLINE.question("Enter a value: ").trim();
+  while(!(choice >= 0 && choice <= 4)) {
       console.log("Please make a valid choice");
-      choice = READLINE.question("Enter a value: ").trim().toLowerCase();
+      choice = READLINE.question("Enter a value: ").trim();
   }
   if(choice == 1) {
     contacts[contactIndex].name = getNameInput();
@@ -305,16 +316,16 @@ function displayUpdateMenu() {
   } else if(choice == 2) {
     contacts[contactIndex].number = getNumberInput();
     console.log();
-    console.log("Contact number updated!");
+    console.log("Contact phone number updated!");
   } else if(choice == 3) {
     contacts[contactIndex].email = getEmailInput();
     console.log();
-    console.log("Contact email updated!");
+    console.log("Contact email address updated!");
   } else if(choice == 4) {
-    contacts[contactIndex].notes = READLINE.question("Call notes (optional): ").trim();
+    contacts[contactIndex].notes = READLINE.question("Notes (optional): ").trim();
     console.log();
-    console.log("Contact call reponse updated!");
-  } else if(choice == "q") {
+    console.log("Contact notes updated!");
+  } else if(choice == 0) {
     console.log();
     console.log("Nothing updated!");
   }
@@ -329,7 +340,8 @@ function displayUpdateMenu() {
   that contact by name (you have functions for both of these actions).
 
   If the contact isn't in the contact array, let the user know that you couldn't
-  find it. Otherwise, display the update menu.
+  find it. Otherwise, call displayContactMenu() with the contact's index passed
+  to it as an argument.
 *******************************************************************************/
 
 function updateContact() {
@@ -394,40 +406,43 @@ function searchContact() {
   } else {
     console.log();
     console.log("No matches found.");
+    console.log();
   }
-  console.log();
 }
 
 /******************************************************************************
                                 printAllContacts()
 
-  If the user has no contacts, let them know and do nothing else. Otherwise,
-  print the info of every contact in the contacts array.
+  Print the info of every contact in the contacts array. You already have a
+  function that prints the info for one contact, so this should be very
+  straightforward.
 *******************************************************************************/
 
 function printAllContacts() {
-  console.log("Print All Contacts");
-  console.log();
-  console.log("Printing " + contacts.length + " contact(s):");
+  console.log("Printing " + contacts.length + " Contact(s):");
   console.log();
   for(var i = 0; i < contacts.length; i++) {
     printContactInfo(contacts[i].name);
   }
-  console.log();
 }
 
 /******************************************************************************
                                 displayMainMenu()
 
-  Display the main menu. From here the user can
-  following choices:
-  console.log("1: Add Contact");
-  console.log("2: Remove Contact");
-  console.log("3: Update Contact");
-  console.log("4: Search Contact");
-  console.log("5: Show All Contacts");
-  console.log("q: Quit");
+  Display the main menu, with the following choices:
+   1) Add Contact
+   2) Remove Contact
+   3) Update Contact
+   4) Search Contact
+   5) Print All Contacts
+   0) Quit
 
+  Based on what the user chooses, call the appropriate function. However, if
+  the user chooses options 2 through 5 and they don't have any contacts, let
+  them know and do nothing else (no point in wasting their time).
+
+  If the user enters "0" (or anything else you want), set quit to true, which
+  will prevent this function from running again in the run() loop.
 *******************************************************************************/
 
 function displayMainMenu() {
@@ -436,16 +451,17 @@ function displayMainMenu() {
   console.log("2: Remove Contact");
   console.log("3: Update Contact");
   console.log("4: Search Contact");
-  console.log("5: Show All Contacts");
-  console.log("q: Quit");
-  var choice = READLINE.question("Enter a value: ").trim().toLowerCase();
-  while(!(choice >= 1 && choice <= 5) && choice != "q") {
+  console.log("5: Print All Contacts");
+  console.log("0: Quit");
+  var choice = READLINE.question("Enter a value: ").trim();
+  while(!(choice >= 0 && choice <= 5)) {
     console.log("Please make a valid choice.");
-    choice = READLINE.question("Enter a value: ").trim().toLowerCase();
+    choice = READLINE.question("Enter a value: ").trim();
   }
   console.log();
   if(choice >= 2 && choice <= 5 && contacts.length === 0) {
     console.log("You have no contacts.");
+    console.log();
   } else if(choice == 1) {
     addContact();
   } else if(choice == 2) {
@@ -456,18 +472,31 @@ function displayMainMenu() {
     searchContact();
   } else if(choice == 5) {
     printAllContacts();
-  } else if(choice == "q") {
+  } else if(choice == 0) {
     quit = true;
   }
 }
 
+/******************************************************************************
+                                run()
+
+  This is the "main" function that runs the entire program. Here's what it needs
+  to do, in order:
+    1) Print a greeting.
+    2) Setup global variables.
+    3) While the global variable quit is set to false, display the main menu in
+       an endless loop.
+    4) Outside of the loop, print a goodbye message.
+*******************************************************************************/
+
 function run() {
   printGreeting();
-  setupApp();
+  setup();
   while(!quit) {
     displayMainMenu();
   }
   console.log("Goodbye!");
 }
 
+// Run the program!
 run();
