@@ -37,8 +37,8 @@ Instructions:
 Given an array of strings, return an object containing a key for every
 different string in the array, and the value is that string's length.
 
-Hint: With these "word" problems, bracket notation to add each string as an
-object key.
+Hint: With these "word" problems, you should use bracket notation to add each
+string as an object key.
 
 Examples:
 wordLen(["a", "bb", "a", "bb"]) → {"bb": 2, "a": 1}
