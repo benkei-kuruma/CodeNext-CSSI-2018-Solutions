@@ -36,3 +36,4 @@ var day = p + 1;
 console.log("In " + y + ", Easter falls on " + n + "/" + day + ".");
 console.log("Goodbye!");
 console.log("******************************************************************");
+readline.question("Press Enter key to exit.");

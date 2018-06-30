@@ -186,3 +186,4 @@ function run() {
 
 // Run the program!
 run();
+readline.question("Press Enter key to exit.");

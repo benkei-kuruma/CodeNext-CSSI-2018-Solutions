@@ -7,3 +7,4 @@ console.log("Hey! What's 1 + 1?");
 console.log("It's " + 1 + 1 + " of course!");
 console.log("No, it's " + (1 + 1) + ", silly goose!");
 // console.log("This isn't going to get printed, is it?");
+readline.question("Press Enter key to exit.");

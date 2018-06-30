@@ -16,3 +16,4 @@ console.log(nickels + " nickels");
 console.log(cents + " pennies");
 console.log("BLOop BleEp! i Hope yOU aRE SATiSfieD wITh thiS SerVicE!");
 console.log("*****************************************************************");
+readline.question("Press Enter key to exit.");

@@ -80,11 +80,11 @@ function run() {
   fantasyName = getNewFirstName() + " " + getNewLastName() + ", " + getHonorific();
   console.log();
   console.log("Thank you for answering every question! Please wait one moment.");
-  sleep(3000);
+  //sleep(3000);
   console.log();
   console.log("CALCULATING, PLEASE WAIT...");
   console.log();
-  sleep(3000);
+  //sleep(3000);
   console.log("**************************************************************");
   console.log("All hail " + fantasyName + "!");
   console.log("**************************************************************");
@@ -92,3 +92,4 @@ function run() {
 
 // Run the program!
 run();
+readline.question("Press Enter key to exit.");

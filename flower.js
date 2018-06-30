@@ -345,3 +345,4 @@ function run() {
 
 // Run the program!
 run();
+READLINE.question("Press Enter key to exit.");

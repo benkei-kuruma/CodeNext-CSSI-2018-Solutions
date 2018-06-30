@@ -1,4 +1,5 @@
 // Author: FirstName LastName
+const READLINE = require("readline-sync");
 var y = 2003;
 console.log("y = " + y);
 var a = y % 19;
@@ -31,3 +32,4 @@ var p = parseInt((h + r - 7 * m + 114) % 31);
 console.log("p = " + p);
 var day = p + 1;
 console.log("In " + y + ", Easter falls on " + n + "/" + day + ".");
+READLINE.question("Press Enter key to exit.");
