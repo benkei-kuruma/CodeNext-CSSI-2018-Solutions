@@ -55,6 +55,13 @@ function printGreeting() {
   console.log();
 }
 
+/******************************************************************************
+                                  resetBoard()
+
+  Set board to a 3x3 array full of " - " strings. You can use nested for loops
+  to do this, or create the board by hand.
+*******************************************************************************/
+
 function resetBoard() {
   board = [[], [], []];
   for(var i = 0; i < 3; i++) {
@@ -82,6 +89,12 @@ function setupGame() {
   quit = false;
 }
 
+/******************************************************************************
+                                   printBoard()
+
+  Print the tic-tac-toe board to the terminal so the player can see it.
+*******************************************************************************/
+
 function printBoard() {
   console.log("  " + " 0 " + " 1 " + " 2 ");
   for(var i = 0; i < board.length; i++) {
@@ -92,6 +105,13 @@ function printBoard() {
     console.log(currentRow);
   }
 }
+
+/******************************************************************************
+                                   checkRows()
+
+  Check each individual row for a win. If "X" has won, return "X". If "O" has
+  won, return "O". If no one has won, return an empty string "".
+*******************************************************************************/
 
 function checkRows() {
   for(var i = 0; i < board.length; i++) {
@@ -113,6 +133,13 @@ function checkRows() {
   return "";
 }
 
+/******************************************************************************
+                                   checkColumns()
+
+  Check each individual column for a win. If "X" has won, return "X". If "O" has
+  won, return "O". If no one has won, return an empty string "".
+*******************************************************************************/
+
 function checkColumns() {
   for(var i = 0; i < board.length; i++) {
     var xCount = 0;
@@ -133,6 +160,14 @@ function checkColumns() {
   return "";
 }
 
+/******************************************************************************
+                                   checkLeftDiag()
+
+  Check from the top left square to the bottom right square for a win. If "X"
+  has won, return "X". If "O" has won, return "O". If no one has won, return an
+  empty string "".
+*******************************************************************************/
+
 function checkLeftDiag() {
   var xCount = 0;
   var oCount = 0;
@@ -150,6 +185,14 @@ function checkLeftDiag() {
   }
   return "";
 }
+
+/******************************************************************************
+                                   checkRightDiag()
+
+  Check from the top right square to the bottom left square for a win. If "X"
+  has won, return "X". If "O" has won, return "O". If no one has won, return an
+  empty string "".
+*******************************************************************************/
 
 function checkRightDiag() {
   var xCount = 0;
@@ -170,6 +213,14 @@ function checkRightDiag() {
   return "";
 }
 
+/******************************************************************************
+                                   checkWon()
+
+  Call all four "check" functions to determine if a player has won or if the
+  game should keep going. If "X" has won, return "X". If "O" has won, return
+  "O". If no one has won, return an empty string "".
+*******************************************************************************/
+
 function checkWon() {
   var rowWon = checkRows(board);
   var colWon = checkColumns(board);
@@ -187,6 +238,18 @@ function checkWon() {
       return "";
   }
 }
+
+/******************************************************************************
+                                 chooseRowColumn()
+
+  Ask the currently active player to choose a row and then a column. Validate
+  their input to make sure they aren't entering bad inputs (only 0, 1, or 2
+  should be accepted). If a player chooses a square that is not blank (" - "),
+  they should be made to choose again, until they choose a blank square.
+
+  After the player chooses a valid square, set it to " X " or " O " accordingly
+  (mind the spaces!). Then switch the active player to the other player.
+*******************************************************************************/
 
 function chooseRowColumn() {
   var playerName = "X";
@@ -219,6 +282,25 @@ function chooseRowColumn() {
   }
 }
 
+/******************************************************************************
+                                   playGame()
+
+  While turnsleft is greater than 0 and the winner variable is set to an
+  empty string, do the following in an endless loop:
+    1) Print the board.
+    2) If the winner is "X", print "X wins!"
+    3) Otherwise, if the winner is "O", print "O wins!".
+    4) Otherwise, no one has won, so call chooseRowColumn() and decrement
+       turnsLeft.
+
+  Outside of the loop, check if turnsLeft is 0. If so, print the board, then
+  print "DRAW!".
+
+  Finally, the game is over at this point. So ask players if they would like to
+  play again (just as you did in Nim). If they answer anything other than "yes"
+  or "y" (or whatever else you want), set quit to true.
+*******************************************************************************/
+
 function playGame() {
   while(turnsLeft > 0 && winner === "") {
     printBoard();
@@ -246,6 +328,17 @@ function playGame() {
   console.log();
 }
 
+/******************************************************************************
+                                   run()
+
+  The "mother function" of the program. Runs the game by doing the following:
+  1) Print a greeting.
+  2) While quit is set to false, do the the following:
+     A) Setup the game.
+     B) Play the game.
+  3) Outside the loop above, print a "Goodbye" message.
+*******************************************************************************/
+
 function run() {
   printGreeting();
   while(!quit) {
@@ -255,5 +348,6 @@ function run() {
   console.log("Goodbye!");
 }
 
+// Run the program!
 run();
 READLINE.question("Press Enter key to exit.");
