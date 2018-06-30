@@ -61,7 +61,7 @@ testWordLen();
                                    wordCount()
 
 Instructions:
-The classic word-count algorithm: given an array of strings, return a object
+The classic word-count algorithm: given an array of strings, return an object
 with a key for each different string, with the value the number of times that
 string appears in the array.
 
@@ -90,7 +90,7 @@ testWordCount();
                                    wordMultiple()
 
 Instructions:
-Given an array of strings, return a object where each different string is a key
+Given an array of strings, return an object where each different string is a key
 and its value is true if that string appears 2 or more times in the array.
 
 Hint:
