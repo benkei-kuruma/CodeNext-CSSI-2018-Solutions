@@ -200,8 +200,7 @@ function checkRightDiag() {
   for(var i = board.length - 1; i >= 0; i--) {
     if(board[i][2 - i] === " X ") {
       xCount++;
-    }
-    else if(board[i][2 - i] === " O ") {
+    } else if(board[i][2 - i] === " O ") {
       oCount++;
     }
   }
