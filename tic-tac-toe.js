@@ -58,14 +58,12 @@ function printGreeting() {
 /******************************************************************************
                                   resetBoard()
 
-  Set board to a 3x3 array full of " - " strings. You can use nested for loops
-  to do this, or create the board by hand.
+  Fill the 2D board array with " - " strings (which represent empty spaces).
 *******************************************************************************/
 
 function resetBoard() {
-  board = [[], [], []];
-  for(var i = 0; i < 3; i++) {
-    for(var j = 0; j < 3; j++) {
+  for(var i = 0; i < board.length; i++) {
+    for(var j = 0; j < board.length; j++) {
       board[i][j] = " - ";
     }
   }
@@ -75,13 +73,19 @@ function resetBoard() {
                                    setupGame()
 
   Initialize global variables as follows:
-  -call resetBoard() to initialize the board to a 3x3 grid full of " - ".
+  -initialize board as a 2D array of undefined values, with 3 rows and 3 columns.
+  -call resetBoard() to fill the board with " - " (which represent empty spaces).
   -set activePlayer to either 0 or 1 ("coin flip"): Math.floor(Math.random() * 2)
   -set winner to an empty string ""
   -set quit to false
 *******************************************************************************/
 
 function setupGame() {
+  board = [
+    [undefined, undefined, undefined],
+    [undefined, undefined, undefined],
+    [undefined, undefined, undefined]
+  ];
   resetBoard();
   turnsLeft = 9;
   activePlayer = Math.floor(Math.random() * 2);
