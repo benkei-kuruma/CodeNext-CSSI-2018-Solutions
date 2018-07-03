@@ -253,7 +253,7 @@ function getGuess(alreadyGuessed) {
 
 function processGuess() {
   var alreadyGuessed = missedLetters.concat(correctLetters);
-  guess = getGuess(alreadyGuessed);
+  var guess = getGuess(alreadyGuessed);
   if(secretWord.indexOf(guess) >= 0) {
     correctLetters.push(guess);
   } else {
