@@ -255,9 +255,9 @@ function testFix45() {
 
 function testSquareUp() {
   console.log();
-  console.log("squareUp(3) → [0,0,1,0,2,1,3,2,1] "	+ "[" + squareUp(3) + "]");
+  console.log("squareUp(3) → [0,0,1,0,2,1,3,2,1] " + "[" + squareUp(3) + "]");
   console.log("squareUp(2) → [0,1,2,1] " + "[" + squareUp(2) + "]");
-  console.log("squareUp(4) → [0,0,0,1,0,0,2,1,0,3,2,1,4,3,2,1] "	+ "[" + squareUp(4) + "]");
-  console.log("squareUp(1) → [1] "	+ "[" + squareUp(1) + "]");
-  console.log("squareUp(0) → [] "	+ "[" + squareUp(0) + "]");
+  console.log("squareUp(4) → [0,0,0,1,0,0,2,1,0,3,2,1,4,3,2,1] " + "[" + squareUp(4) + "]");
+  console.log("squareUp(1) → [1] " + "[" + squareUp(1) + "]");
+  console.log("squareUp(0) → [] " + "[" + squareUp(0) + "]");
 }
