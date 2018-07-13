@@ -23,11 +23,11 @@ function printGreeting() {
   function returns an empty string, which is just "".
 
   Examples:
-  sayZeroNine(5) → "five"
-  sayZeroNine(8) → "eight"
-  sayZeroNine(13) → ""
+  sayOneNine(5) → "five"
+  sayOneNine(8) → "eight"
+  sayOneNine(13) → ""
 *******************************************************************************/
-function sayZeroNine(num) {
+function sayOneNine(num) {
   if(num === 1) {
     return "one";
   } else if(num === 2) {
@@ -153,10 +153,10 @@ function sayNumber(num) {
     var tens = parseInt(num % 100 / 10);
     var ones = num % 10;
     if(thousands > 0) {
-      wordForm += sayZeroNine(thousands) + "-thousand ";
+      wordForm += sayOneNine(thousands) + "-thousand ";
     }
     if(hundreds > 0) {
-      wordForm += sayZeroNine(hundreds) + "-hundred ";
+      wordForm += sayOneNine(hundreds) + "-hundred ";
     }
     if(tens === 1) {
       wordForm += sayTenNineteen(num % 100);
@@ -167,7 +167,7 @@ function sayNumber(num) {
       if(tens != 0) {
         wordForm += "-";
       }
-      wordForm += sayZeroNine(ones);
+      wordForm += sayOneNine(ones);
     }
     */
     let ones = num % 10;
@@ -178,10 +178,10 @@ function sayNumber(num) {
     num = Math.floor(num / 10);
     let thousands = num;
     if(thousands > 0) {
-      wordForm += sayZeroNine(thousands) + "-thousand ";
+      wordForm += sayOneNine(thousands) + "-thousand ";
     }
     if(hundreds > 0) {
-      wordForm += sayZeroNine(hundreds) + "-hundred ";
+      wordForm += sayOneNine(hundreds) + "-hundred ";
     }
     if(tens === 1) {
       wordForm += sayTenNineteen((tens * 10) + ones);
@@ -192,7 +192,7 @@ function sayNumber(num) {
       if(tens != 0) {
         wordForm += "-";
       }
-      wordForm += sayZeroNine(ones);
+      wordForm += sayOneNine(ones);
     }
   }
   return wordForm;
