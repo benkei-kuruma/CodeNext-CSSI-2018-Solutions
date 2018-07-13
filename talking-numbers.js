@@ -147,6 +147,7 @@ function sayNumber(num) {
   if(num == 0) {
     wordForm = "zero";
   } else {
+    /* alternate method
     var thousands = parseInt(num / 1000);
     var hundreds = parseInt(num % 1000 / 100);
     var tens = parseInt(num % 100 / 10);
@@ -159,6 +160,31 @@ function sayNumber(num) {
     }
     if(tens === 1) {
       wordForm += sayTenNineteen(num % 100);
+    } else {
+      wordForm += sayTwentyNinety(tens);
+    }
+    if(ones > 0 && tens != 1) {
+      if(tens != 0) {
+        wordForm += "-";
+      }
+      wordForm += sayZeroNine(ones);
+    }
+    */
+    let ones = num % 10;
+    num = Math.floor(num / 10);
+    let tens = num % 10;
+    num = Math.floor(num / 10);
+    let hundreds = num % 10;
+    num = Math.floor(num / 10);
+    let thousands = num;
+    if(thousands > 0) {
+      wordForm += sayZeroNine(thousands) + "-thousand ";
+    }
+    if(hundreds > 0) {
+      wordForm += sayZeroNine(hundreds) + "-hundred ";
+    }
+    if(tens === 1) {
+      wordForm += sayTenNineteen((tens * 10) + ones);
     } else {
       wordForm += sayTwentyNinety(tens);
     }
