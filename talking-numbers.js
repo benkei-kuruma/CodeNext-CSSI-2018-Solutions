@@ -171,12 +171,9 @@ function sayNumber(num) {
     }
     */
     let ones = num % 10;
-    num = Math.floor(num / 10);
-    let tens = num % 10;
-    num = Math.floor(num / 10);
-    let hundreds = num % 10;
-    num = Math.floor(num / 10);
-    let thousands = num;
+    let tens = Math.floor(num / 10) % 10;
+    let hundreds = Math.floor(num / 100) % 10;
+    let thousands = Math.floor(num / 1000);
     if(thousands > 0) {
       wordForm += sayOneNine(thousands) + "-thousand ";
     }
