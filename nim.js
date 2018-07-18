@@ -1,4 +1,4 @@
-let// Author: FirstName lastName
+// Author: FirstName lastName
 let readline = require("readline-sync");
 
 /******************************************************************************
