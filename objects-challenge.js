@@ -47,8 +47,8 @@ wordLen(["code", "code", "code", "bug"]) → {"code": 4, "bug": 3}
 *******************************************************************************/
 
 function wordLen(strings) {
-  var retVal = {};
-  for(var i = 0; i < strings.length; i++) {
+  let retVal = {};
+  for(let i = 0; i < strings.length; i++) {
     retVal[strings[i]] = strings[i].length;
   }
   return retVal;
@@ -72,8 +72,8 @@ wordCount(["c", "c", "c", "c"]) → {"c": 4}
 *******************************************************************************/
 
 function wordCount(strings) {
-  var retVal = {};
-  for(var i = 0; i < strings.length; i++) {
+  let retVal = {};
+  for(let i = 0; i < strings.length; i++) {
     if(!retVal.hasOwnProperty(strings[i])) {
       retVal[strings[i]] = 1;
     } else {
@@ -106,8 +106,8 @@ wordMultiple(["c", "c", "c", "c"]) → {"c": true}
 *******************************************************************************/
 
 function wordMultiple(strings) {
-  var retVal = {};
-  for(var i = 0; i < strings.length; i++) {
+  let retVal = {};
+  for(let i = 0; i < strings.length; i++) {
     if(!retVal.hasOwnProperty(strings[i])) {
       retVal[strings[i]] = false;
     } else if(retVal[strings[i]] === false){
@@ -135,9 +135,9 @@ wordAppend(["a", "", "a"]) → "a"
 *******************************************************************************/
 
 function wordAppend(strings) {
-  var retVal = "";
-  var obj = {};
-  for(var i = 0; i < strings.length; i++) {
+  let retVal = "";
+  let obj = {};
+  for(let i = 0; i < strings.length; i++) {
     if(!obj.hasOwnProperty(strings[i])) {
       obj[strings[i]] = 1;
     } else {

@@ -1,9 +1,9 @@
 // Author: FirstName LastName
-var readline = require("readline-sync");
-var sleep = require("system-sleep");
+let readline = require("readline-sync");
+let sleep = require("system-sleep");
 
 // global variables
-var firstName, lastName, momMaidenName, cityBorn, dreamCar, street, fantasyName;
+let firstName, lastName, momMaidenName, cityBorn, dreamCar, street, fantasyName;
 
 /******************************************************************************
                                   getNewFirstName()

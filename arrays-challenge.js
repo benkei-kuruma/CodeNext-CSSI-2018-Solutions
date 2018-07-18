@@ -34,7 +34,7 @@ midThree([1, 2, 3]) → [1, 2, 3]
 *******************************************************************************/
 
 function midThree(nums) {
-  var middleIndex = Math.floor(nums.length / 2);
+  let middleIndex = Math.floor(nums.length / 2);
   return [nums[middleIndex - 1], nums[middleIndex], nums[middleIndex + 1]];
 }
 
@@ -65,7 +65,7 @@ fizzBuzz(1, 11) → ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "B
 *******************************************************************************/
 
 function fizzBuzz(start, end) {
-  var retVal = [];
+  let retVal = [];
   while(start < end) {
     if(start % 3 === 0 && start % 5 === 0) {
       retVal.push("FizzBuzz");
@@ -99,8 +99,8 @@ copyEvens([6, 1, 2, 4, 5, 8], 3) → [6, 2, 4]
 *******************************************************************************/
 
 function copyEvens(nums, count) {
-  var retVal = [];
-  var i = 0;
+  let retVal = [];
+  let i = 0;
   while(count > 0) {
     if(nums[i] % 2 == 0) {
       retVal.push(nums[i]);
@@ -130,9 +130,9 @@ zeroMax([0, 1, 0]) → [1, 1, 0]
 *******************************************************************************/
 
 function zeroMax(nums) {
-  var largest = 0;
-  var retVal = [];
-  for(var i = nums.length - 1; i >= 0; i--) {
+  let largest = 0;
+  let retVal = [];
+  for(let i = nums.length - 1; i >= 0; i--) {
     if(nums[i] > largest && nums[i] % 2 === 1) {
       largest = nums[i];
     }

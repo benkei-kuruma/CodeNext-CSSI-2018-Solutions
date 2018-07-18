@@ -1,6 +1,6 @@
 // Author: FirstName LastName
-var readline = require("readline-sync");
-var userName = readline.question("Please enter your name: ");
+let readline = require("readline-sync");
+let userName = readline.question("Please enter your name: ");
 console.log("Hello " + userName + "!");
 console.log("It's a beautiful day for programming, isn't it?");
 console.log("Hey! What's 1 + 1?");

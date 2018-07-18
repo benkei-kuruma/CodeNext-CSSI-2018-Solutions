@@ -1,5 +1,5 @@
-// Author: FirstName lastName
-var readline = require("readline-sync");
+let// Author: FirstName lastName
+let readline = require("readline-sync");
 
 /******************************************************************************
                                 global variables
@@ -17,7 +17,7 @@ Boolean. Represents if the player has chosen to quit the game (true) or not
 (false). Initialized to false in run(), can be altered in processResult().
 *******************************************************************************/
 
-var stonesRemaining, activePlayer, quit;
+let stonesRemaining, activePlayer, quit;
 
 /******************************************************************************
                                   printGreeting()
@@ -68,8 +68,8 @@ function setupGame() {
 *******************************************************************************/
 
 function printStones() {
-  var stoneString = "";
-  for(var i = 0; i < stonesRemaining; i++) {
+  let stoneString = "";
+  for(let i = 0; i < stonesRemaining; i++) {
     stoneString += "O ";
   }
   console.log();
@@ -100,7 +100,7 @@ function printStones() {
 *******************************************************************************/
 
 function removeStones() {
-  var stonesToRemove = 0;
+  let stonesToRemove = 0;
   while(!(stonesToRemove >= 1 && stonesToRemove <= 3)) {
     if(activePlayer === 0) {
       stonesToRemove = readline.question("Player One, enter # of stones to remove (1, 2, or 3): ");
@@ -145,7 +145,7 @@ function processResult() {
     console.log("Player Two wins!");
   }
   console.log();
-  var keepPlaying = readline.question("Play again? (yes or no): ");
+  let keepPlaying = readline.question("Play again? (yes or no): ");
   if(keepPlaying != "yes" && keepPlaying != "y") {
     quit = true;
   }

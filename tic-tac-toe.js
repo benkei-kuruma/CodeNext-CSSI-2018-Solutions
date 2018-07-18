@@ -37,7 +37,7 @@ Boolean. Represents if the player has chosen to quit the game (true) or not
 (false).
 *******************************************************************************/
 
-var board, turnsLeft, activePlayer, winner, quit;
+let board, turnsLeft, activePlayer, winner, quit;
 
 /******************************************************************************
                                   printGreeting()
@@ -62,8 +62,8 @@ function printGreeting() {
 *******************************************************************************/
 
 function resetBoard() {
-  for(var i = 0; i < board.length; i++) {
-    for(var j = 0; j < board.length; j++) {
+  for(let i = 0; i < board.length; i++) {
+    for(let j = 0; j < board.length; j++) {
       board[i][j] = " - ";
     }
   }
@@ -101,9 +101,9 @@ function setupGame() {
 
 function printBoard() {
   console.log("  " + " 0 " + " 1 " + " 2 ");
-  for(var i = 0; i < board.length; i++) {
-    var currentRow = i + " ";
-    for(var j = 0; j < board[i].length; j++) {
+  for(let i = 0; i < board.length; i++) {
+    let currentRow = i + " ";
+    for(let j = 0; j < board[i].length; j++) {
       currentRow += board[i][j];
     }
     console.log(currentRow);
@@ -118,10 +118,10 @@ function printBoard() {
 *******************************************************************************/
 
 function checkRows() {
-  for(var i = 0; i < board.length; i++) {
-    var xCount = 0;
-    var oCount = 0;
-    for(var j = 0; j < board[i].length; j++) {
+  for(let i = 0; i < board.length; i++) {
+    let xCount = 0;
+    let oCount = 0;
+    for(let j = 0; j < board[i].length; j++) {
       if(board[i][j] === " X ") {
         xCount++;
       } else if(board[i][j] === " O ") {
@@ -145,10 +145,10 @@ function checkRows() {
 *******************************************************************************/
 
 function checkColumns() {
-  for(var i = 0; i < board.length; i++) {
-    var xCount = 0;
-    var oCount = 0;
-    for(var j = 0; j < board[i].length; j++) {
+  for(let i = 0; i < board.length; i++) {
+    let xCount = 0;
+    let oCount = 0;
+    for(let j = 0; j < board[i].length; j++) {
       if(board[j][i] === " X ") {
         xCount++;
       } else if(board[j][i] === " O ") {
@@ -173,9 +173,9 @@ function checkColumns() {
 *******************************************************************************/
 
 function checkLeftDiag() {
-  var xCount = 0;
-  var oCount = 0;
-  for(var i = 0; i < board.length; i++) {
+  let xCount = 0;
+  let oCount = 0;
+  for(let i = 0; i < board.length; i++) {
     if(board[i][i] === " X ") {
       xCount++;
     } else if(board[i][i] === " O ") {
@@ -199,9 +199,9 @@ function checkLeftDiag() {
 *******************************************************************************/
 
 function checkRightDiag() {
-  var xCount = 0;
-  var oCount = 0;
-  for(var i = board.length - 1; i >= 0; i--) {
+  let xCount = 0;
+  let oCount = 0;
+  for(let i = board.length - 1; i >= 0; i--) {
     if(board[i][2 - i] === " X ") {
       xCount++;
     } else if(board[i][2 - i] === " O ") {
@@ -225,10 +225,10 @@ function checkRightDiag() {
 *******************************************************************************/
 
 function checkWon() {
-  var rowWon = checkRows(board);
-  var colWon = checkColumns(board);
-  var leftDiagWon = checkLeftDiag(board);
-  var rightDiagWon = checkRightDiag(board);
+  let rowWon = checkRows(board);
+  let colWon = checkColumns(board);
+  let leftDiagWon = checkLeftDiag(board);
+  let rightDiagWon = checkRightDiag(board);
   if(rowWon != "") {
       return rowWon;
   } else if(colWon != "") {
@@ -255,18 +255,18 @@ function checkWon() {
 *******************************************************************************/
 
 function chooseRowColumn() {
-  var playerName = "X";
+  let playerName = "X";
   if(activePlayer === 1) {
     playerName = "O";
   }
-  var validSelection = false;
+  let validSelection = false;
   while(!validSelection) {
-    var row = READLINE.question(playerName + ", choose a row: ");
+    let row = READLINE.question(playerName + ", choose a row: ");
     while(!(row >= 0 && row <= 2)) {
       console.log("Please enter 0, 1, or 2.");
       row = READLINE.question(playerName + ", choose a row: ");
     }
-    var column = READLINE.question(playerName + ", choose a column: ");
+    let column = READLINE.question(playerName + ", choose a column: ");
     while(!(column >= 0 && column <= 2)) {
       console.log("Please enter 0, 1, or 2.");
       column = READLINE.question(playerName + ", choose a column: ");
@@ -324,7 +324,7 @@ function playGame() {
     console.log();
     console.log("DRAW!");
   }
-  var keepPlaying = READLINE.question("Play again? (yes or no): ");
+  let keepPlaying = READLINE.question("Play again? (yes or no): ");
   if(keepPlaying != "yes" && keepPlaying != "y") {
     quit = true;
   }

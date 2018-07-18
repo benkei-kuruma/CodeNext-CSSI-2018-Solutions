@@ -27,7 +27,7 @@ const READLINE = require("READLINE-sync");
   not (false).
 *******************************************************************************/
 
-var contacts, quit;
+let contacts, quit;
 
 /******************************************************************************
                                   printGreeting()
@@ -68,7 +68,7 @@ function setup() {
 *******************************************************************************/
 
 function getNameInput() {
-  var nameInput = READLINE.question("Name: ").trim();
+  let nameInput = READLINE.question("Name: ").trim();
   while(nameInput.length === 0) {
     console.log("Please enter at least one character.");
     nameInput = READLINE.question("Name: ").trim();
@@ -94,7 +94,7 @@ function checkNumber(number) {
   if(number < 0) {
     return false;
   }
-  var digits = 0;
+  let digits = 0;
   while(number > 0) {
     digits++;
     number = parseInt(number / 10);
@@ -109,7 +109,7 @@ function checkNumber(number) {
   then return it. Use checkNumber() to validate phone numbers.
 *******************************************************************************/
 function getNumberInput() {
-  var numberInput = READLINE.question("Phone Number: ").trim();
+  let numberInput = READLINE.question("Phone Number: ").trim();
   while(!checkNumber(numberInput)) {
     console.log("Please enter a 10-digit phone number (e.g., 1234567890).");
     numberInput = READLINE.question("Phone Number: ").trim();
@@ -135,13 +135,13 @@ function checkEmail(email) {
   if(email.length === 0) {
     return true;
   }
-  var firstAT = email.indexOf("@");
-  var secondAT = email.indexOf("@", firstAT + 1);
+  let firstAT = email.indexOf("@");
+  let secondAT = email.indexOf("@", firstAT + 1);
   if(firstAT < 1 || secondAT != -1) {
     return false;
   }
-  var topLevelDomains = [".com", ".org", ".net", ".edu"];
-  var lastFourCharacters = email.substring(email.length - 4);
+  let topLevelDomains = [".com", ".org", ".net", ".edu"];
+  let lastFourCharacters = email.substring(email.length - 4);
   if(topLevelDomains.indexOf(lastFourCharacters) === -1) {
     return false;
   }
@@ -156,7 +156,7 @@ function checkEmail(email) {
 *******************************************************************************/
 
 function getEmailInput() {
-  var emailInput = READLINE.question("Email Address (Optional): ").trim();
+  let emailInput = READLINE.question("Email Address (Optional): ").trim();
   while(!checkEmail(emailInput)) {
     console.log("Please enter a valid email address.");
     emailInput = READLINE.question("Email Address (Optional): ").trim();
@@ -183,8 +183,8 @@ function getEmailInput() {
 *******************************************************************************/
 
 function compareContacts(a, b) {
-  var nameA = a.name.toLowerCase();
-  var nameB = b.name.toLowerCase();
+  let nameA = a.name.toLowerCase();
+  let nameB = b.name.toLowerCase();
   if(nameA < nameB) {
     return -1;
   } else if(nameA > nameB) {
@@ -212,11 +212,11 @@ function compareContacts(a, b) {
 
 function addContact() {
   console.log("Add Contact");
-  var nameInput = getNameInput();
-  var numberInput = getNumberInput();
-  var emailInput = getEmailInput();
-  var notesInput = READLINE.question("Notes (optional): ").trim();
-  var contact = {
+  let nameInput = getNameInput();
+  let numberInput = getNumberInput();
+  let emailInput = getEmailInput();
+  let notesInput = READLINE.question("Notes (optional): ").trim();
+  let contact = {
     name:nameInput,
     number:numberInput,
     email:emailInput,
@@ -241,7 +241,7 @@ function addContact() {
 *******************************************************************************/
 
 function getContactIndex(contactName) {
-  for(var i = 0; i < contacts.length; i++) {
+  for(let i = 0; i < contacts.length; i++) {
     if(contacts[i].name.toLowerCase() === contactName.toLowerCase()) {
       return i;
     }
@@ -264,7 +264,7 @@ function getContactIndex(contactName) {
 
 function removeContact() {
   console.log("Remove Contact");
-  var contactIndex = getContactIndex(getNameInput());
+  let contactIndex = getContactIndex(getNameInput());
   if(contactIndex != -1) {
     contacts.splice(contactIndex, 1);
     console.log();
@@ -303,7 +303,7 @@ function displayUpdateMenu(contactIndex) {
   console.log("3: Email Address");
   console.log("4: Notes");
   console.log("0: Return to Main Menu")
-  var choice = READLINE.question("Enter a value: ").trim();
+  let choice = READLINE.question("Enter a value: ").trim();
   while(!(choice >= 0 && choice <= 4)) {
       console.log("Please make a valid choice");
       choice = READLINE.question("Enter a value: ").trim();
@@ -344,7 +344,7 @@ function displayUpdateMenu(contactIndex) {
 
 function updateContact() {
   console.log("Update Contact");
-  var contactIndex = getContactIndex(getNameInput());
+  let contactIndex = getContactIndex(getNameInput());
   if(contactIndex != -1) {
     console.log();
     displayUpdateMenu(contactIndex);
@@ -364,7 +364,7 @@ function updateContact() {
 *******************************************************************************/
 
 function printContactInfo(contactName) {
-  var contactIndex = getContactIndex(contactName);
+  let contactIndex = getContactIndex(contactName);
   console.log("Name: " + contacts[contactIndex].name);
   console.log("Phone Number: " + contacts[contactIndex].number);
   console.log("Email Address: " + contacts[contactIndex].email);
@@ -387,9 +387,9 @@ function printContactInfo(contactName) {
 
 function searchContact() {
   console.log("Search Contact");
-  var contactName = getNameInput();
-  var matches = [];
-  for(var i = 0; i < contacts.length; i++) {
+  let contactName = getNameInput();
+  let matches = [];
+  for(let i = 0; i < contacts.length; i++) {
     if(contacts[i].name.toLowerCase().startsWith(contactName.toLowerCase())) {
       matches.push(contacts[i]);
     }
@@ -398,7 +398,7 @@ function searchContact() {
     console.log();
     console.log(matches.length + " matches found:");
     console.log();
-    for(var i = 0; i < matches.length; i++) {
+    for(let i = 0; i < matches.length; i++) {
       printContactInfo(matches[i].name);
     }
   } else {
@@ -419,7 +419,7 @@ function searchContact() {
 function printAllContacts() {
   console.log("Printing " + contacts.length + " Contact(s):");
   console.log();
-  for(var i = 0; i < contacts.length; i++) {
+  for(let i = 0; i < contacts.length; i++) {
     printContactInfo(contacts[i].name);
   }
 }
@@ -451,7 +451,7 @@ function displayMainMenu() {
   console.log("4: Search Contact");
   console.log("5: Print All Contacts");
   console.log("0: Quit");
-  var choice = READLINE.question("Enter a value: ").trim();
+  let choice = READLINE.question("Enter a value: ").trim();
   while(!(choice >= 0 && choice <= 5)) {
     console.log("Please make a valid choice.");
     choice = READLINE.question("Enter a value: ").trim();

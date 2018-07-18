@@ -14,8 +14,8 @@ stringTimes("Hi", 1) → "Hi"
 *******************************************************************************/
 
 function stringTimes(str, n) {
-  var retVal = "";
-  for(var i = 0; i < n; i++) {
+  let retVal = "";
+  for(let i = 0; i < n; i++) {
     retVal += str;
   }
   return retVal;
@@ -38,8 +38,8 @@ countXX("xxxx") → 3
 *******************************************************************************/
 
 function countXX(str) {
-  var count = 0;
-  for(var i = 0; i < str.length - 1; i++) {
+  let count = 0;
+  for(let i = 0; i < str.length - 1; i++) {
     if(str.substring(i, i + 2) === "xx") {
       count++;
     }
@@ -64,7 +64,7 @@ bobThere("bac") → false
 *******************************************************************************/
 
 function bobThere(str) {
-  for(var i = 0; i < str.length - 2; i++) {
+  for(let i = 0; i < str.length - 2; i++) {
     if(str.charAt(i) === "b" && str.charAt(i + 2) === "b") {
       return true;
     }
@@ -89,8 +89,8 @@ countCode("cozexxcope") → 2
 *******************************************************************************/
 
 function countCode(str) {
-  var count = 0;
-  for(var i = 0; i < str.length - 3; i++) {
+  let count = 0;
+  for(let i = 0; i < str.length - 3; i++) {
     if(str.substring(i, i + 2) == "co" && str.charAt(i + 3) == 'e') {
       count++;
       i = i + 3;
@@ -119,8 +119,8 @@ xyBalance("bbb") → true
 *******************************************************************************/
 
 function xyBalance(str) {
-  var balanced = true;
-  for(var i = 0; i < str.length; i++) {
+  let balanced = true;
+  for(let i = 0; i < str.length; i++) {
     if(str.charAt(i) === "x") {
       balanced = false;
     } else if(str.charAt(i) === "y") {

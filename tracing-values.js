@@ -1,5 +1,5 @@
 // Author: FirstName LastName
-var x, y, z;
+let x, y, z;
 debugger;
 x = 10;
 debugger;

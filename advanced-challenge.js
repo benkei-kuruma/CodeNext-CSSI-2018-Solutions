@@ -15,11 +15,11 @@ canBalance([10, 10]) → true
 *******************************************************************************/
 
 function canBalance(nums){
-  var leftSum = 0;
-  for(var i = 0; i < nums.length; i++) {
+  let leftSum = 0;
+  for(let i = 0; i < nums.length; i++) {
     leftSum += nums[i];
-    var rightSum = 0;
-    for(var j = i + 1; j < nums.length; j++) {
+    let rightSum = 0;
+    for(let j = i + 1; j < nums.length; j++) {
       rightSum += nums[j];
     }
     if(leftSum === rightSum) {
@@ -47,10 +47,10 @@ maxSpan([1, 4, 2, 1, 4, 4, 4]) → 6
 *******************************************************************************/
 
 function maxSpan(nums) {
-  var max = 0;
-  for(var i = 0; i < nums.length; i++) {
-    var span = 1;
-    for(var j = i; j < nums.length; j++) {
+  let max = 0;
+  for(let i = 0; i < nums.length; i++) {
+    let span = 1;
+    for(let j = i; j < nums.length; j++) {
       if(nums[i] === nums[j] && span > max) {
         max = span;
       }
@@ -82,8 +82,8 @@ function linearIn(outer, inner){
   if(inner.length === 0) {
     return true;
   }
-  var outerID = 0;
-  var innerID = 0;
+  let outerID = 0;
+  let innerID = 0;
   while(outerID < outer.length) {
     if(outer[outerID] === inner[innerID]) {
       innerID++;
@@ -116,23 +116,23 @@ fix45([1, 4, 1, 5, 5, 4, 1]) → [1, 4, 5, 1, 1, 4, 5]
 *******************************************************************************/
 
 function fix45(nums){
-  var fix = nums.slice();
-  for(var i = fix.length - 1; i >= 0; i--) {
+  let fix = nums.slice();
+  for(let i = fix.length - 1; i >= 0; i--) {
     if(fix[i] === 4 && fix[i + 1] !== 5) {
-      var foundFive = false;
-      for(var j = i - 1; j >= 0 && !foundFive; j--) {
+      let foundFive = false;
+      for(let j = i - 1; j >= 0 && !foundFive; j--) {
         if(fix[j] === 5) {
-          var five = fix[j];
+          let five = fix[j];
           fix[j] = fix[i + 1];
           fix[i + 1] = five;
           foundFive = true;
         }
       }
     } else if(fix[i] === 5 && fix[i - 1] !== 4) {
-      var foundFour = false;
-      for(var j = i - 1; j >= 0 && !foundFour; j--) {
+      let foundFour = false;
+      for(let j = i - 1; j >= 0 && !foundFour; j--) {
         if(fix[j] === 4 && fix[j + 1] !== 5) {
-          var five = fix[i];
+          let five = fix[i];
           fix[i] = fix[j + 1];
           fix[j + 1] = five;
           foundFour = true;
@@ -161,10 +161,10 @@ squareUp(4) → [0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 2, 1, 4, 3, 2, 1]
 *******************************************************************************/
 
 function squareUp(n){
-  var mod = n + 1;
-  var current = 1;
-  var retVal = [];
-  for(var i = n * n - 1; i >= 0; i--) {
+  let mod = n + 1;
+  let current = 1;
+  let retVal = [];
+  for(let i = n * n - 1; i >= 0; i--) {
     if(current <= mod) {
       retVal.unshift(current % mod);
     } else {

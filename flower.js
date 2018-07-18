@@ -84,7 +84,7 @@ const WORDS = ("ant baboon badger bat bear beaver camel cat clam cobra cougar co
   processGameOver();
 *******************************************************************************/
 
-var missedLetters, correctLetters, secretWord, running;
+let missedLetters, correctLetters, secretWord, running;
 
 /******************************************************************************
                                   printGreeting()
@@ -128,8 +128,8 @@ function setupGame() {
 *******************************************************************************/
 
 function printMissedLetters() {
-  var missedLettersString = "";
-  for(var i = 0; i < missedLetters.length; i++) {
+  let missedLettersString = "";
+  for(let i = 0; i < missedLetters.length; i++) {
     missedLettersString += missedLetters[i] + " ";
   }
   console.log("Missed letters: " + missedLettersString);
@@ -149,17 +149,17 @@ function printMissedLetters() {
 *******************************************************************************/
 
 function printCorrectLetters() {
-  var blanks = [];
-  for(var i = 0; i < secretWord.length; i++) {
+  let blanks = [];
+  for(let i = 0; i < secretWord.length; i++) {
     blanks.push("_");
   }
-  for(var i = 0; i < secretWord.length; i++) {
+  for(let i = 0; i < secretWord.length; i++) {
     if(correctLetters.indexOf(secretWord[i]) >= 0) {
       blanks[i] = secretWord[i];
     }
   }
-  var blanksString = "";
-  for(var i = 0; i < blanks.length; i++) {
+  let blanksString = "";
+  for(let i = 0; i < blanks.length; i++) {
     blanksString += blanks[i] + " ";
   }
   console.log("Correct letters: " + blanksString);
@@ -190,7 +190,7 @@ function printBoard() {
 *******************************************************************************/
 
 function getRandomWord() {
-  var randomIndex = Math.floor(Math.random() * WORDS.length);
+  let randomIndex = Math.floor(Math.random() * WORDS.length);
   return WORDS[randomIndex];
 }
 
@@ -217,7 +217,7 @@ function getRandomWord() {
 
 function getGuess(alreadyGuessed) {
   while(true) {
-    var guess = READLINE.question("Guess a letter: ").toLowerCase();
+    let guess = READLINE.question("Guess a letter: ").toLowerCase();
     if(guess.length != 1) {
       console.log("Please guess a single letter at a time.");
     } else if(alreadyGuessed.indexOf(guess) >= 0) {
@@ -244,16 +244,16 @@ function getGuess(alreadyGuessed) {
 
   You can concatenate arrays using the array.concat() method. For example:
 
-  var array1 = ["a", "b", "c"];
-  var array2 = ["d", "e", "f"];
-  var array3 = array1.concat(array2);
+  let array1 = ["a", "b", "c"];
+  let array2 = ["d", "e", "f"];
+  let array3 = array1.concat(array2);
 
   The value of array3 is ["a", "b", "c", "d", "e", "f"].
 *******************************************************************************/
 
 function processGuess() {
-  var alreadyGuessed = missedLetters.concat(correctLetters);
-  var guess = getGuess(alreadyGuessed);
+  let alreadyGuessed = missedLetters.concat(correctLetters);
+  let guess = getGuess(alreadyGuessed);
   if(secretWord.indexOf(guess) >= 0) {
     correctLetters.push(guess);
   } else {
@@ -282,8 +282,8 @@ function processGuess() {
 *******************************************************************************/
 
 function checkWinLose() {
-  var win = true;
-  for(var i = 0; i < secretWord.length && win; i++) {
+  let win = true;
+  for(let i = 0; i < secretWord.length && win; i++) {
     if(correctLetters.indexOf(secretWord[i]) === -1) {
       win = false;
     }
@@ -308,7 +308,7 @@ function checkWinLose() {
 *******************************************************************************/
 
 function processGameOver() {
-  var response = READLINE.question("Do you want to play again? (yes or no): ");
+  let response = READLINE.question("Do you want to play again? (yes or no): ");
   if(response.toLowerCase().startsWith("y")) {
     setupGame();
     console.log();

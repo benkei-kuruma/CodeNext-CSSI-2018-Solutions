@@ -1,14 +1,14 @@
 // Author: FirstName LastName
-var readline = require("readline-sync");
+let readline = require("readline-sync");
 console.log("*****************************************************************");
 console.log("bLeep blOop! i'm a CHanGE macHINe!");
-var cents = parseInt(readline.question("Please enter cents as a positive integer: "));
+let cents = parseInt(readline.question("Please enter cents as a positive integer: "));
 console.log(cents + " cents makes:");
-var quarters = parseInt(cents / 25);
+let quarters = parseInt(cents / 25);
 cents = cents - quarters * 25;
-var dimes = parseInt(cents / 10);
+let dimes = parseInt(cents / 10);
 cents = cents - dimes * 10;
-var nickels = parseInt(cents / 5);
+let nickels = parseInt(cents / 5);
 cents = cents - nickels * 5;
 console.log(quarters + " quarters");
 console.log(dimes + " dimes");

@@ -61,7 +61,7 @@ deFront("away") → "aay"
 *******************************************************************************/
 
 function deFront(str) {
-  var retString = str.substring(2);
+  let retString = str.substring(2);
   if(str.charAt(1) === "b") {
     retString = "b" + retString;
   }
